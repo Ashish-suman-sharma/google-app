@@ -41,38 +41,6 @@ This project integrates **Google Custom Search** to provide a custom search func
 Here is a brief overview of the core functionality:
 
 ```javascript
-const searchInput = document.querySelector("#search-input");
-const searchButton = document.querySelector("#google-search-btn");
-const resultsSection = document.querySelector("#results-section");
-const prevBtn = document.querySelector("#prev-btn");
-const nextBtn = document.querySelector("#next-btn");
-const searchBar = document.querySelector("#search-bar");
-let startIndex = 1;
-
-searchInput.addEventListener("keydown", function (event) {
-  if (event.code === "Enter") {
-    startIndex = 1;
-    search();
-  }
-});
-
-searchButton.addEventListener("click", function () {
-  startIndex = 1;
-  search();
-});
-
-prevBtn.addEventListener("click", function () {
-  if (startIndex > 1) {
-    startIndex -= 10;
-    search();
-  }
-});
-
-nextBtn.addEventListener("click", function () {
-  startIndex += 10;
-  search();
-});
-
 async function search() {
   const input = searchInput.value;
   const apiKey = 'YOUR_API_KEY'; // Replace with your API key
