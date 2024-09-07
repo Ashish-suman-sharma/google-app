@@ -92,7 +92,7 @@ async function search() {
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/google-custom-search.git
+   git clone [https://github.com/yourusername/google-custom-search.git](https://github.com/Ashish-suman-sharma/google-app.git)
    ```
    
 2. **Add Your API Key**:
