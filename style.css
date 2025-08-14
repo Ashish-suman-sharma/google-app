@@ -1,3 +1,14 @@
+/* CSS Variables */
+:root {
+  --primary-black: #1a1a1a;
+  --secondary-black: #2a2a2a;
+  --tertiary-black: #3a3a3a;
+  --white: #ffffff;
+  --lighter-gray: #e5e5e5;
+  --shadow-medium: rgba(0, 0, 0, 0.1);
+  --shadow-heavy: rgba(0, 0, 0, 0.2);
+}
+
 /* Universal Styles */
 * {
   margin: 0;
@@ -270,4 +281,144 @@ a {
   .content-wrapper {
     padding: 0 10px; /* Add padding to prevent horizontal scrolling */
   }
+}
+
+/* Floating Action Buttons */
+.floating-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.floating-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 6px 25px var(--shadow-medium);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    animation: floatingPulse 3s ease-in-out infinite, fadeInUp 0.8s ease-out 0.6s both;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.floating-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.floating-btn:hover::before {
+    left: 100%;
+}
+
+.floating-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 40px var(--shadow-heavy);
+}
+
+.floating-btn:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.btn-text {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.github-btn {
+    background: linear-gradient(135deg, var(--primary-black), var(--secondary-black));
+    color: var(--white);
+}
+
+.github-btn:hover {
+    background: linear-gradient(135deg, var(--secondary-black), var(--tertiary-black));
+}
+
+.github-btn .btn-icon {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.website-btn {
+    background: linear-gradient(135deg, var(--white), #f8f9fa);
+    color: var(--primary-black);
+    border: 1px solid var(--lighter-gray);
+}
+
+.website-btn:hover {
+    background: linear-gradient(135deg, #f8f9fa, var(--white));
+    border-color: var(--primary-black);
+}
+
+.profile-img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.floating-btn:hover .profile-img {
+    transform: scale(1.1);
+    border-color: var(--primary-black);
+}
+
+/* Floating pulse animation for attention */
+@keyframes floatingPulse {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 6px 25px var(--shadow-medium);
+    }
+    50% {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 10px 35px var(--shadow-heavy);
+    }
+}
+
+/* fadeInUp animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating button stagger animation */
+.floating-btn:nth-child(1) {
+    animation-delay: 0.6s, 0s;
+}
+
+.floating-btn:nth-child(2) {
+    animation-delay: 0.8s, 1.5s;
 }
